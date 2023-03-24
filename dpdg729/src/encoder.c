@@ -24,7 +24,7 @@
 #include "basicOperationsMacros.h"
 #include "utils.h"
 
-#include "bcg729/encoder.h"
+#include "encoder.h"
 
 #include "interpolateqLSP.h"
 #include "qLSP2LP.h"
