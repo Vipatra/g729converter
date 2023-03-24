@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 from distutils.command.sdist import sdist as sdist_orig
 from distutils.errors import DistutilsExecError
 from setuptools.command.install import install
@@ -34,5 +34,7 @@ setup(name='dpdg729',
       cmdclass={
         'install': InstallCommand
       },
-      packages=['dpdg729'],
+      package_dir={"": "dpdg729"},
+      include_package_data=True,
+      packages=find_packages(where="dpdg729"),
       zip_safe=False)
