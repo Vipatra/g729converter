@@ -22,4 +22,5 @@ def convert(file_path):
 
 
 if __name__ == "__main__":
-    convert('/home/ubuntu/test.wav')
+    f = convert('/home/ubuntu/test.wav')
+    log.info(f"File is at {f}")
