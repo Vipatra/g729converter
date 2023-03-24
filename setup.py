@@ -40,7 +40,7 @@ class InstallCommand(install):
 
 
 setup(name='dpdg729',
-      version='0.1.0',
+      version='0.1.1',
       description='Convert wav to g729',
       url='https://github.com/Vipatra/g729converter',
       author='Ranjith BR',
