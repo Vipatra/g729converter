@@ -73,9 +73,9 @@ int main(int argc, char *argv[] )
 	}
 
 	/* create the output file(filename is the same than input file with the .out extension) */
-	char *outputFile = malloc((strlen(filePrefix)+5)*sizeof(char));
-	sprintf(outputFile, "%s.out",filePrefix);
-	if ( (fpOutput = fopen(outputFile, "w")) == NULL) {
+	char *outputFile = malloc((strlen(filePrefix)+6)*sizeof(char));
+	sprintf(outputFile, "%s.G729",filePrefix);
+	if ( (fpOutput = fopen(outputFile, "wb")) == NULL) {
 		printf("%s - Error: can't create file  %s\n", argv[0], outputFile);
 		exit(-1);
 	}
@@ -115,7 +115,8 @@ int main(int argc, char *argv[] )
 			start = clock();
 
 			bcg729Encoder(encoderChannelContext, inputBuffer, bitStream, &bitStreamLength);
-
+			//fprintf(fpOutput,"%s",bitStream);
+			fwrite(bitStream,sizeof(bitStream),1,fpOutput);
 			end = clock();
 			cpu_time_used += ((double) (end - start));
 
@@ -126,24 +127,24 @@ int main(int argc, char *argv[] )
 
 				if (j==0) {
 					/* write the output to the output file */
-					fprintf(fpOutput,"%d",outputBuffer[0]);
+					//fprintf(fpOutput,"%d",outputBuffer[0]);
 					for (i=1; i<NB_PARAMETERS; i++) {
-						fprintf(fpOutput,",%d",outputBuffer[i]);
+					//	fprintf(fpOutput,",%d",outputBuffer[i]);
 					}
-					fprintf(fpOutput,",0\n");
+					//fprintf(fpOutput,",0\n");
 				}
 			} else if (bitStreamLength == 2) {
 					/* write the output to the output file */
-					fprintf(fpOutput,"%d,%d,%d,%d",(bitStream[0]>>7)&0x01, (bitStream[0]>>2)&0x1F, ((bitStream[0]&0x03)<<2) | ((bitStream[1]>>6)&0x03), ((bitStream[1])>>1)&0x1F);
+					//fprintf(fpOutput,"%d,%d,%d,%d",(bitStream[0]>>7)&0x01, (bitStream[0]>>2)&0x1F, ((bitStream[0]&0x03)<<2) | ((bitStream[1]>>6)&0x03), ((bitStream[1])>>1)&0x1F);
 					for (i=4; i<NB_PARAMETERS; i++) {
-						fprintf(fpOutput,",0");  /* just get the correct number of parameters */
+					//	fprintf(fpOutput,",0");   //just get the correct number of parameters
 					}
-					fprintf(fpOutput,",0,2\n");
+					//fprintf(fpOutput,",0,2\n");
 			} else { /* bitstream to 0, un transmitted frame */
 					for (i=0; i<NB_PARAMETERS; i++) {
-						fprintf(fpOutput,"0,");  /* just get the correct number of parameters */
+					//	fprintf(fpOutput,"0,");  // just get the correct number of parameters 
 					}
-					fprintf(fpOutput,"1,0\n");
+					//fprintf(fpOutput,"1,0\n");
 			}
 		}
 		/* perf measurement */
