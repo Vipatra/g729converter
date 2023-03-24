@@ -33,7 +33,6 @@ class InstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
         target = get_virtualenv_path()
-
         print("installing to", target)
         self.spawn(['bash', c_installation_file, target])
         install.run(self)
@@ -50,6 +49,5 @@ setup(name='dpdg729',
         'install': InstallCommand
       },
       packages=['dpdg729'],
-      include_package_data=True,
       zip_safe=False
 )
