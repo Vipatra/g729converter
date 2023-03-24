@@ -13,3 +13,5 @@ install(){
     make
     make install
 }
+
+install $1
