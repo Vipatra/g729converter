@@ -22,7 +22,7 @@ class InstallCommand(install):
         install.run(self)
 
 setup(name='dpdg729',
-      version='0.1',
+      version='0.1.0',
       description='Convert wav to g729',
       url='https://github.com/Vipatra/g729converter',
       author='Ranjith BR',
