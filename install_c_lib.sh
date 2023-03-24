@@ -4,7 +4,7 @@ set -e
 
 echo "PWD is `pwd`"
 
-cd dpdg927
+cd dpdg729
 
 cmake . -DCMAKE_INSTALL_PREFIX=g729 -DCMAKE_PREFIX_PATH=g729 -DENABLE_TESTS=YES
 make
