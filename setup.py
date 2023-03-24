@@ -1,6 +1,7 @@
 from setuptools import setup
 from distutils.command.sdist import sdist as sdist_orig
 from distutils.errors import DistutilsExecError
+from setuptools.command.install import install
 
 from setuptools import setup
 
@@ -13,14 +14,12 @@ print("CWD: ", cwd)
 c_installation_file = os.path.join(cwd, 'install_c_lib.sh')
 
 
-class sdist(sdist_orig):
-    def run(self):
-        try:
-            self.spawn(['bash', c_installation_file])
-        except DistutilsExecError:
-            self.warn('listing directory failed')
-        super().run()
 
+class InstallCommand(install):
+    """Post-installation for installation mode."""
+    def run(self):
+        self.spawn(['bash', c_installation_file])
+        install.run(self)
 
 setup(name='dpdg729',
       version='0.1',
@@ -30,7 +29,7 @@ setup(name='dpdg729',
       author_email='ranjith@dpdzero.com',
       license='Closed source',
       cmdclass={
-        'sdist': sdist
+        'install': InstallCommand
       },
       packages=['dpdg729'],
       zip_safe=False)
