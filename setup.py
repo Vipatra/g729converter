@@ -19,8 +19,10 @@ class InstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
         print("Running install command at %s" % os.getcwd())
+        print("Items %s" % os.listdir(os.getcwd())
         self.spawn(['bash', c_installation_file])
         install.run(self)
+
 
 setup(name='dpdg729',
       version='0.1.0',
