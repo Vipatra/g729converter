@@ -36,5 +36,5 @@ setup(name='dpdg729',
       },
       package_dir={"": "dpdg729"},
       include_package_data=True,
-      packages=find_packages(where="dpdg729"),
+      packages='dpdg729',
       zip_safe=False)
