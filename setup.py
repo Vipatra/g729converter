@@ -25,7 +25,7 @@ class sdist(sdist_orig):
 setup(name='dpdg729',
       version='0.1',
       description='Convert wav to g729',
-      url='https://github.com/Vipatra/g729converter',
+      url='https://github.com/ranjith19/g729converter',
       author='Ranjith BR',
       author_email='ranjith@dpdzero.com',
       license='Closed source',
