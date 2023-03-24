@@ -38,7 +38,7 @@
 
 #include "testUtils.h"
 
-#include "bcg729/encoder.h"
+#include "encoder.h"
 
 FILE *fpOutput;
 
