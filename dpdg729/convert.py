@@ -11,7 +11,7 @@ executable = os.path.join(cwd, 'tst/encoderTest')
 class ConversionError(Exception):
     pass
 
-def convert(file_path):
+def convert_wav_to_g749(file_path):
     expected = file_path.replace('.wav', '.G749')
     output = subprocess.run([executable, file_path])
     if os.path.exists(expected):
@@ -23,5 +23,5 @@ def convert(file_path):
 
 
 if __name__ == "__main__":
-    f = convert('/home/ubuntu/test.wav')
+    f = convert_wav_to_g749('/home/ubuntu/test.wav')
     log.info(f"File is at {f}")
