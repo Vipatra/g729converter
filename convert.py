@@ -5,7 +5,7 @@ import logging
 log = logging.getLogger('g729converter')
 cwd = os.path.dirname(os.path.realpath(__file__))
 
-executable = os.path.join(cwd, 'test/encoderTest')
+executable = os.path.join(cwd, 'clib/test/encoderTest')
 
 class ConversionError(Exception):
     pass
