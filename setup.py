@@ -31,6 +31,6 @@ setup(name='dpdg729',
       license='Closed source',
       cmdclass={
         'sdist': sdist
-      }
+      },
       packages=['dpdg729'],
       zip_safe=False)
