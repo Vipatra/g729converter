@@ -26,8 +26,8 @@
 #endif
 
 #include "codecParameters.h"
-#include "encoder.h"
-#include "decoder.h"
+#include "./encoder.h"
+#include "./decoder.h"
 
 typedef int16_t word16_t;
 typedef uint16_t uword16_t;
