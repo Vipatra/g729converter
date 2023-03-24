@@ -18,6 +18,7 @@ c_installation_file = os.path.join(cwd, 'install_c_lib.sh')
 class InstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
+        print("Running install command at %s" % os.getcwd())
         self.spawn(['bash', c_installation_file])
         install.run(self)
 
