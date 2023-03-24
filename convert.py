@@ -2,6 +2,7 @@ import os
 import subprocess
 import logging
 
+logging.basicConfig(level=logging.INFO)
 log = logging.getLogger('g729converter')
 cwd = os.path.dirname(os.path.realpath(__file__))
 
