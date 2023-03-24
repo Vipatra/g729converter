@@ -35,4 +35,6 @@ setup(name='dpdg729',
         'install': InstallCommand
       },
       packages=['dpdg729'],
-      zip_safe=False)
+      include_package_data=True,
+      zip_safe=False
+)
