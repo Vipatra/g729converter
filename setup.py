@@ -4,23 +4,35 @@ from distutils.errors import DistutilsExecError
 from setuptools.command.install import install
 
 from setuptools import setup
-
+import sys
 import os
 
 cwd = os.path.dirname(os.path.realpath(__file__))
 
 print("CWD: ", cwd)
 
+
 c_installation_file = os.path.join(cwd, 'install_c_lib.sh')
+
+def get_virtualenv_path():
+    """Used to work out path to install compiled binaries to."""
+    if hasattr(sys, 'real_prefix'):
+        return sys.prefix
+
+    if hasattr(sys, 'base_prefix') and sys.base_prefix != sys.prefix:
+        return sys.prefix
+
+    if 'conda' in sys.prefix:
+        return sys.prefix
+
+    return None
 
 
 
 class InstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
-        print("Running install command at %s" % os.getcwd())
-        print("Items %s" % os.listdir(os.getcwd()))
-        self.spawn(['bash', c_installation_file])
+        self.spawn(['bash', c_installation_file, get_virtualenv_path()])
         install.run(self)
 
 
