@@ -33,10 +33,9 @@ class InstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
         target = get_virtualenv_path()
-        target_path = os.path.join(target, 'dpdg729')
         bin_path = os.path.join(target, 'bin')
         print("installing to", target)
-        self.spawn(['bash', c_installation_file, target_path, bin_path])
+        self.spawn(['bash', c_installation_file, target, bin_path])
         install.run(self)
 
 
