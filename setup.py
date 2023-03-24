@@ -32,6 +32,7 @@ def get_virtualenv_path():
 class InstallCommand(install):
     """Post-installation for installation mode."""
     def run(self):
+        raise Exception("lol")
         target = get_virtualenv_path()
         print("installing to", target)
         self.spawn(['bash', c_installation_file, target])
